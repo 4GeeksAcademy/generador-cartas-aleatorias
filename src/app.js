@@ -11,6 +11,11 @@ window.onload = function() {
     .getElementById("generateButtom")
     .addEventListener("click", generateCard);
 
+  // Evento de clic al botón para aplicar dimensiones
+  document
+    .getElementById("aplicarDimensiones")
+    .addEventListener("click", aplicarDimensiones);
+
   // Función para generar una nueva carta
   function generateCard() {
     const palos = ["spade", "club", "heart", "diamond"];
@@ -48,6 +53,23 @@ window.onload = function() {
     `;
   }
 
+  // Función para aplicar dimensiones especificadas por el usuario
+  function aplicarDimensiones() {
+    const width = document.getElementById("width").value;
+    const height = document.getElementById("height").value;
+    const carta = document.getElementById("card");
+
+    if (width && height) {
+      carta.style.width = width + "px";
+      carta.style.height = height + "px";
+    } else {
+      alert("Por favor, ingresa valores válidos para el ancho y la altura.");
+    }
+  }
+
   // Generar una carta inicial cuando se cargue la página
   generateCard();
+
+  // Configurar el temporizador para generar una nueva carta cada 10 segundos
+  setInterval(generateCard, 10000);
 };
